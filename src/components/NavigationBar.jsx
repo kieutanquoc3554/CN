@@ -21,12 +21,15 @@ export default function NavigationBar() {
           Đăng xuất
         </button>
       ) : (
-        <Link
-          to="/login"
-          className="bg-[#615FFF] px-5 py-2 text-white text-sm rounded-md hover:bg-[#4B47D1]"
-        >
-          Đăng nhập
-        </Link>
+        <>
+          <span>{localStorage.getItem("user.fullname")}</span>
+          <Link
+            to="/login"
+            className="bg-[#615FFF] px-5 py-2 text-white text-sm rounded-md hover:bg-[#4B47D1]"
+          >
+            Đăng nhập
+          </Link>
+        </>
       )}
     </header>
   );
