@@ -10,12 +10,20 @@ import CostAnalysis from "./pages/CostAnalysis";
 import AppLayout from "./components/AppLayout";
 import Materials from "./pages/Materials";
 import Login from "./pages/Login";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route path="/" element={<AppLayout />}>
+      <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <AppLayout />
+          </PrivateRoute>
+        }
+      >
         <Route path="dashboard" index element={<Dashboard />} />
         <Route path="devices" element={<Devices />} />
         <Route path="schedule" element={<Schedule />} />
