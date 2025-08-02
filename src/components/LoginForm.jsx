@@ -1,6 +1,7 @@
 import { FaUser, FaLock } from "react-icons/fa";
 import useAuthHandler from "../hooks/handler/useAuthHandler";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function LoginForm() {
   const { handleLogin } = useAuthHandler();
@@ -14,7 +15,7 @@ export default function LoginForm() {
     const result = await handleLogin(username, password);
 
     if (result.success) {
-      alert("Đăng nhập thành công!");
+      toast.success("Đăng nhập thành công!");
       navigate("/dashboard");
     } else {
       alert(result.message);
