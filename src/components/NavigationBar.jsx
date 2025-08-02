@@ -14,15 +14,19 @@ export default function NavigationBar() {
     <header className="h-16 bg-white shadow px-6 flex items-center justify-between">
       <h1 className="text-xl">Computerized Maintenance Management System</h1>
       {token ? (
-        <button
-          onClick={handleLogout}
-          className="bg-[#615FFF] px-5 py-2 text-white text-sm rounded-md hover:bg-[#4B47D1] cursor-pointer"
-        >
-          Đăng xuất
-        </button>
+        <div className="flex items-center gap-5">
+          <strong className="text-sm text-blue-800">
+            {JSON.parse(localStorage.getItem("user"))?.fullname}
+          </strong>
+          <button
+            onClick={handleLogout}
+            className="bg-[#615FFF] px-5 py-2 text-white text-sm rounded-md hover:bg-[#4B47D1] cursor-pointer"
+          >
+            Đăng xuất
+          </button>
+        </div>
       ) : (
         <>
-          <span>{localStorage.getItem("user.fullname")}</span>
           <Link
             to="/login"
             className="bg-[#615FFF] px-5 py-2 text-white text-sm rounded-md hover:bg-[#4B47D1]"
