@@ -78,19 +78,20 @@ export default function Devices() {
   if (error) return <p className="p-6 text-red-500">Lỗi: {error.message}</p>;
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-3xl font-bold">Danh sách thiết bị</h2>
+    <div className="max-w-7xl mx-auto p-4 sm:p-6">
+      {/* Header + nút thêm */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+        <h2 className="text-2xl sm:text-3xl font-bold">Danh sách thiết bị</h2>
         <button
           onClick={() => setOpenAddDeviceForm(true)}
-          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm shadow cursor-pointer"
+          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-sm shadow cursor-pointer w-full sm:w-auto"
         >
           + Thêm thiết bị
         </button>
       </div>
 
-      {/* Tabs lọc theo mức độ ưu tiên */}
-      <div className="flex gap-3 mb-5">
+      {/* Tabs lọc */}
+      <div className="flex flex-wrap gap-2 sm:gap-3 mb-5">
         {["All", "High", "Medium", "Low"].map((level) => (
           <button
             key={level}
@@ -113,8 +114,8 @@ export default function Devices() {
       </div>
 
       {/* Bảng thiết bị */}
-      <div className="overflow-x-auto shadow rounded-xl bg-white">
-        <table className="min-w-full text-sm text-left border-separate border-spacing-y-2 p-4">
+      <div className="overflow-x-auto bg-white rounded-xl shadow">
+        <table className="min-w-full text-sm text-left border-separate border-spacing-y-2">
           <thead className="text-xs uppercase text-gray-600 bg-gray-50">
             <tr>
               <th className="px-4 py-3">STT</th>
@@ -129,7 +130,7 @@ export default function Devices() {
             {filteredDevices.map((device, index) => (
               <tr
                 key={device.id}
-                className="bg-white hover:bg-gray-50 transition rounded-xl cursor-pointer"
+                className="bg-white hover:bg-gray-50 transition rounded-xl"
               >
                 <td className="px-4 py-3">{index + 1}</td>
                 <td className="px-4 py-3 font-semibold">{device.name}</td>
@@ -143,9 +144,9 @@ export default function Devices() {
                 <td className="px-4 py-3">
                   <button
                     onClick={() => setSelectedId(device.id)}
-                    className="flex items-center gap-1 px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-lg cursor-pointer"
+                    className="flex items-center gap-1 px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-lg"
                   >
-                    <Eye size={14} /> Xem chi tiết
+                    <Eye size={14} /> Xem
                   </button>
                 </td>
               </tr>

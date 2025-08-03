@@ -74,7 +74,7 @@ export default function Schedule() {
   };
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
+    <div className="p-6 w-full">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-semibold text-gray-800">
           Lập lịch bảo trì
@@ -88,8 +88,8 @@ export default function Schedule() {
         </button>
       </div>
 
-      <div className="overflow-x-auto rounded-xl shadow bg-white">
-        <table className="min-w-full text-sm text-gray-700">
+      <div className="overflow-x-auto bg-white rounded-xl shadow">
+        <table className="w-full table-auto text-sm text-gray-700 min-w-[800px]">
           <thead className="text-gray-600 bg-gray-100">
             <tr>
               <th className="p-4 font-semibold">Thiết bị</th>
@@ -135,7 +135,7 @@ export default function Schedule() {
                     <option value="Hủy bỏ">Hủy bỏ</option>
                   </select>
                 </td>
-                <td className="p-4 text-center">
+                <td className="p-4 text-center whitespace-nowrap">
                   <button
                     onClick={() => handleEdit(item)}
                     className="text-indigo-600 hover:text-indigo-800 transition"

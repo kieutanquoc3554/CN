@@ -78,7 +78,7 @@ export default function WorkOrders() {
 
     try {
       await axios.post(
-        `${import.meta.env.VITE_SERVER_URL}/work-orders/assign/${workOrderId}`,
+        `${import.meta.env.VITE_SERVER_URL}/work-orders/assign`,
         {
           technician: technicianId,
           work_order_id: workOrderId,

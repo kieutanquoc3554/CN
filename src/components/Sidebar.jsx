@@ -8,6 +8,7 @@ import {
   Users,
   Wrench,
   History,
+  ClockIcon,
 } from "lucide-react";
 
 const menuItems = [
@@ -43,34 +44,37 @@ const menuItems = [
     path: "/cost-analysis",
     icon: <BarChart3 size={20} />,
   },
+  {
+    label: "Cập nhật",
+    path: "/update",
+    icon: <ClockIcon size={20} />,
+  },
 ];
 
 export default function Sidebar() {
   const location = useLocation();
 
   return (
-    <aside className="w-64 h-screen bg-gradient-to-b from-white to-blue-50 border-r border-blue-100 fixed shadow-xl">
-      <div className="px-6 py-5 text-2xl font-bold text-indigo-600 tracking-tight">
-        🛠 CMMS
-        <p className="text-sm text-black">
-          Computerized Maintenance Management System
-        </p>
+    <aside className="w-20 md:w-64 h-screen bg-gradient-to-b from-white to-blue-50 border-r border-blue-100 fixed shadow-xl">
+      <div className="px-4 py-6 text-2xl font-bold text-indigo-600 tracking-tight">
+        🛠 <p className="hidden md:block text-sm text-black">CMMS</p>
       </div>
-      <nav className="flex flex-col gap-1 px-4">
+
+      <nav className="flex flex-col gap-2 px-2 md:px-4">
         {menuItems.map((item) => {
           const isActive = location.pathname === item.path;
           return (
             <Link
               key={item.path}
               to={item.path}
-              className={`flex items-center gap-3 px-4 py-2 rounded-2xl transition-all font-medium ${
+              className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all font-medium ${
                 isActive
                   ? "bg-indigo-500 text-white shadow-md"
                   : "text-gray-700 hover:bg-indigo-100"
               }`}
             >
-              <span>{item.icon}</span>
-              <span>{item.label}</span>
+              <span className="text-xl">{item.icon}</span>
+              <span className="hidden md:inline">{item.label}</span>
             </Link>
           );
         })}

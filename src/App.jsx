@@ -11,6 +11,7 @@ import AppLayout from "./components/AppLayout";
 import Materials from "./pages/Materials";
 import Login from "./pages/Login";
 import PrivateRoute from "./components/PrivateRoute";
+import UpdateTimeline from "./components/UpdateTimeline";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path="materials" element={<Materials />} />
         <Route path="maintenance-history" element={<History />} />
         <Route path="cost-analysis" element={<CostAnalysis />} />
+        <Route path="update" element={<UpdateTimeline />} />
       </Route>
     </Routes>
   );
