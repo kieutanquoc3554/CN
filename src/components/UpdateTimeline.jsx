@@ -2,6 +2,18 @@ import { ClockIcon } from "lucide-react";
 
 const updates = [
   {
+    date: "2025-08-01",
+    title: "Sửa lỗi tạo phiếu giao việc và Lỗi chính tả",
+    description: `
+- Đã sửa lỗi "intermediate value is not iterable" do destructuring sai kiểu dữ liệu khi dùng db.query (loại bỏ [result] thay bằng result).
+- Cập nhật lại hàm create trong model maintenance_schedule và work_orders để đảm bảo tương thích với kết quả trả về của PostgreSQL.
+- Ép kiểu dữ liệu cho các trường như device_id, maintenance_type_id, frequency_value từ string sang number.
+- Kiểm tra kỹ result.rows[0] để tránh lỗi không mong muốn khi INSERT thất bại.
+- Cập nhật chính tả một số nhãn và thông báo trên giao diện người dùng.
+`,
+  },
+
+  {
     date: "2025-07-30",
     title: "Hoàn thiện Quản lý danh sách thiết bị",
     description: `•	Thông tin chi tiết thiết bị (mã số, loại, vị trí, tình trạng, ngày lắp đặt). Gắn dữ liệu lịch sử bảo trì và lịch vận hành
