@@ -3,12 +3,13 @@ import useDevices from "../hooks/api/useDevices";
 import DeviceDetailModal from "../components/DeviceDetailModal";
 import axios from "axios";
 import AddDeviceForm from "../components/AddDeviceForm";
-import { Eye } from "lucide-react";
+import { Eye, Pencil } from "lucide-react";
 
 export default function Devices() {
   const { devices, loading, error, fetchDevices } = useDevices();
   const [selectedDevice, setSelectedDevice] = useState(null);
   const [selectedId, setSelectedId] = useState(null);
+  const [selectedDeviceUpdate, setSelectedDeviceUpdate] = useState(null);
   const [detailLoading, setDetailLoading] = useState(false);
   const [openAddDeviceForm, setOpenAddDeviceForm] = useState(false);
   const [filter, setFilter] = useState("All");
@@ -141,12 +142,18 @@ export default function Devices() {
                 <td className="px-4 py-3">
                   {renderPriorityBadge(device.priority_level)}
                 </td>
-                <td className="px-4 py-3">
+                <td className="px-4 py-3 flex gap-2">
                   <button
                     onClick={() => setSelectedId(device.id)}
-                    className="flex items-center gap-1 px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-lg"
+                    className="cursor-pointer flex items-center gap-1 px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white text-xs rounded-lg"
                   >
                     <Eye size={14} /> Xem
+                  </button>
+                  <button
+                    onClick={() => setSelectedDeviceUpdate(device.id)}
+                    className="cursor-pointer flex items-center gap-1 px-3 py-2 bg-green-700 hover:bg-green-600 text-white text-xs rounded-lg"
+                  >
+                    <Pencil size={14} /> Cập nhật
                   </button>
                 </td>
               </tr>

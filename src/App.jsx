@@ -25,7 +25,7 @@ function App() {
           </PrivateRoute>
         }
       >
-        <Route path="dashboard" index element={<Dashboard />} />
+        <Route index element={<Dashboard />} />
         <Route path="devices" element={<Devices />} />
         <Route path="schedule" element={<Schedule />} />
         <Route path="work-orders" element={<WorkOrders />} />

@@ -14,7 +14,7 @@ import {
 const menuItems = [
   {
     label: "Dashboard tổng quan",
-    path: "/dashboard",
+    path: "/",
     icon: <LayoutDashboard size={20} />,
   },
   {
