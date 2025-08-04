@@ -96,6 +96,7 @@ export default function Schedule() {
               <th className="p-4 font-semibold">Loại bảo trì</th>
               <th className="p-4 font-semibold">Lịch trình</th>
               <th className="p-4 font-semibold">Hạn kế tiếp</th>
+              <th className="p-4 font-semibold">Ghi chú</th>
               <th className="p-4 font-semibold">Tiến độ</th>
               <th className="p-4 font-semibold text-center">Hành động</th>
             </tr>
@@ -113,6 +114,7 @@ export default function Schedule() {
                 <td className="p-4">
                   {moment(item.next_due_date).format("DD/MM/YYYY") || "-"}
                 </td>
+                <td className="p-4">{item.note}</td>
                 <td className="p-4">
                   <select
                     value={item.progress_step || ""}

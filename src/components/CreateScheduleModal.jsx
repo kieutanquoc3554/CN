@@ -11,6 +11,7 @@ export default function CreateScheduleModal({ onClose, onCreated, schedule }) {
     frequency_unit: schedule?.frequency_unit || "",
     next_due_date: schedule?.next_due_date || "",
     progress_step: schedule?.progress_step || "",
+    note: schedule?.note || "",
   });
   const [devices, setDevices] = useState([]);
   const [technicians, setTechnicians] = useState([]);
@@ -234,6 +235,7 @@ export default function CreateScheduleModal({ onClose, onCreated, schedule }) {
             name="note"
             onChange={handleChange}
             className={`${inputStyle} resize-none h-24`}
+            value={form.note}
           />
         </div>
 
