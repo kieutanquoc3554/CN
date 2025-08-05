@@ -205,15 +205,19 @@ export default function UpdateWorkOrderModal({
                 <label className="block font-medium text-gray-600 mb-1">
                   Trạng thái sau bảo trì
                 </label>
-                <input
+                <select
                   name="status"
                   value={historyData.status}
                   onChange={(e) =>
                     setHistoryData({ ...historyData, status: e.target.value })
                   }
                   className="w-full bg-gray-50 p-2 rounded-2xl shadow-inner"
-                  placeholder="VD: Đã hoạt động tốt"
-                />
+                >
+                  <option value="">-- Chọn trạng thái --</option>
+                  <option value="Completed">Hoàn thành</option>
+                  <option value="Failed">Thất bại</option>
+                  <option value="Skipped">Bỏ qua</option>
+                </select>
               </div>
             </div>
           )}
