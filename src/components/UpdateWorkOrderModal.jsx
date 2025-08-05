@@ -45,10 +45,8 @@ export default function UpdateWorkOrderModal({
         formData
       );
       if (formData.status === "Completed") {
-        await axios.put(
-          `${import.meta.env.VITE_SERVER_URL}/maintenance-history/${
-            workOrder.id
-          }`,
+        await axios.post(
+          `${import.meta.env.VITE_SERVER_URL}/maintenance-history/`,
           {
             ...historyData,
           }

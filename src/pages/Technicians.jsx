@@ -1,14 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  User,
-  BadgeInfo,
-  Wrench,
-  Clock,
-  Hash,
-  Pencil,
-  Settings2,
-} from "lucide-react";
+import { User, BadgeInfo, Wrench, Clock, Hash } from "lucide-react";
 
 export default function Technicians() {
   const [technicians, setTechnicians] = useState([]);
@@ -28,6 +20,16 @@ export default function Technicians() {
 
     fetchTechnicians();
   }, []);
+
+  const Shift = {
+    Morning: "Ca sáng",
+    Afternoon: "Ca chiều",
+    Night: "Ca đêm",
+  };
+
+  function renderShift(shift) {
+    return Shift[shift];
+  }
 
   return (
     <div className="p-6">
@@ -67,12 +69,6 @@ export default function Technicians() {
                     Ca làm
                   </div>
                 </th>
-                <th className="px-5 py-4 font-medium">
-                  <div className="flex items-center gap-1">
-                    <Pencil className="w-4 h-4 text-gray-400" />
-                    Cập nhật
-                  </div>
-                </th>
               </tr>
             </thead>
             <tbody>
@@ -86,12 +82,7 @@ export default function Technicians() {
                     {tech.fullname}
                   </td>
                   <td className="px-5 py-3">{tech.skill_set}</td>
-                  <td className="px-5 py-3">{tech.shift}</td>
-                  <td className="px-5 py-3">
-                    <button className=" px-2 py-1 rounded cursor-pointer">
-                      <Settings2 className="w-6 h-6 text-gray-500 hover:text-gray-800" />
-                    </button>
-                  </td>
+                  <td className="px-5 py-3">{renderShift(tech.shift)}</td>
                 </tr>
               ))}
             </tbody>

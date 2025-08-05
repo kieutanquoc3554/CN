@@ -2,6 +2,12 @@ import { ClockIcon } from "lucide-react";
 
 const updates = [
   {
+    date: "2025-08-04",
+    title:
+      "Cập nhật chức năng Quản lý vật tư, trang dashboard, bổ sung chức năng Xoá phiếu công việc, sửa lỗi không lưu lịch sử bảo trì, tối ưu hiệu năng và sửa lỗi tồn đọng",
+    description: ``,
+  },
+  {
     date: "2025-08-02",
     title:
       "Sửa lỗi trả không đúng ra id giao việc dẫn tới việc không lưu lại lịch sử phân công của nhân viên, cập nhật lại route gốc dẫn tới dashboard",

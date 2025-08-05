@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
 import { toast } from "react-toastify";
-import { PencilIcon } from "lucide-react";
+import { PencilIcon, TrashIcon } from "lucide-react";
 import UpdateWorkOrderModal from "../components/UpdateWorkOrderModal";
 
 export default function WorkOrders() {
@@ -102,6 +102,26 @@ export default function WorkOrders() {
     setSelectedOrder(null);
   };
 
+  const handleDelete = async (id) => {
+    const confirm = window.confirm(
+      "Bạn có chắc chắn muốn xoá phiếu công việc này?"
+    );
+    if (!confirm) return;
+
+    try {
+      const res = await axios.delete(
+        `${import.meta.env.VITE_SERVER_URL}/work-orders/${id}`
+      );
+      if (res.status !== 200) throw new Error("Xoá thất bại");
+
+      toast.success("Đã xoá thành công!");
+      fetchWorkOrders();
+    } catch (err) {
+      console.error(err);
+      alert("Có lỗi xảy ra khi xoá");
+    }
+  };
+
   return (
     <div className="p-6 space-y-6">
       <h2 className="text-3xl font-semibold text-gray-800">Phiếu công việc</h2>
@@ -148,6 +168,7 @@ export default function WorkOrders() {
               <th className="text-left px-6 py-4">Người phụ trách</th>
               <th className="text-left px-6 py-4">Trạng thái</th>
               <th className="text-left px-6 py-4">Cập nhật</th>
+              <th className="text-left px-6 py-4">Xoá</th>
             </tr>
           </thead>
           <tbody>
@@ -202,11 +223,25 @@ export default function WorkOrders() {
                     </span>
                   </td>
                   <td className="px-6 py-4">
+                    {wo && wo.status !== "Completed" && (
+                      <>
+                        <button
+                          className="text-blue-600 hover:text-blue-800 transition"
+                          onClick={() => handleOpenUpdate(wo)}
+                          title="Chỉnh sửa"
+                        >
+                          <PencilIcon className="w-5 h-5 inline" />
+                        </button>
+                      </>
+                    )}
+                  </td>
+                  <td className="px-6 py-4">
                     <button
-                      className="text-blue-600 hover:text-blue-800 transition"
-                      onClick={() => handleOpenUpdate(wo)}
+                      className="text-red-600 hover:text-red-800 transition"
+                      onClick={() => handleDelete(wo.id)}
+                      title="Xoá"
                     >
-                      <PencilIcon className="w-5 h-5 inline" />
+                      <TrashIcon className="w-5 h-5" />
                     </button>
                   </td>
                 </tr>
