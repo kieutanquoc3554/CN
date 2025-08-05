@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Pencil, Trash2 } from "lucide-react";
+import { toast } from "react-toastify";
 
 export default function Materials() {
   const [spareParts, setSpareParts] = useState([]);
@@ -74,6 +75,7 @@ export default function Materials() {
         detail_id: "",
       });
       setNewDetailName("");
+      toast.success("Tạo vật tư thành công!");
     } catch (error) {
       console.error("Lỗi tạo vật tư:", error);
     }
