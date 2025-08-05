@@ -182,9 +182,11 @@ export default function WorkOrders() {
                     {moment(wo.start_time).format("DD/MM/YYYY")}
                   </td>
                   <td className="px-6 py-4">
-                    {moment(wo.end_time).format("DD/MM/YYYY") ||
-                      "Không xác định"}
+                    {wo.end_time
+                      ? moment(wo.end_time).format("DD/MM/YYYY")
+                      : "Không xác định"}
                   </td>
+
                   <td className="px-6 py-4">
                     {wo.technician_name || (
                       <div className="flex items-center gap-2">
