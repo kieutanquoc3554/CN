@@ -182,7 +182,8 @@ export default function WorkOrders() {
                     {moment(wo.start_time).format("DD/MM/YYYY")}
                   </td>
                   <td className="px-6 py-4">
-                    {wo.end_time || "Không xác định"}
+                    {moment(wo.end_time).format("DD/MM/YYYY") ||
+                      "Không xác định"}
                   </td>
                   <td className="px-6 py-4">
                     {wo.technician_name || (
