@@ -147,30 +147,6 @@ export default function Dashboard() {
 
       {/* Tỉ lệ hoàn thành kế hoạch */}
       <div className="flex gap-5">
-        <div className="bg-white rounded-xl shadow p-4 max-w-xs">
-          <h3 className="text-lg font-semibold text-gray-700 mb-4">
-            Tỉ lệ hoàn thành kế hoạch
-          </h3>
-          <ResponsiveContainer width="100%" height={200}>
-            <PieChart>
-              <Pie
-                dataKey="value"
-                data={[
-                  { name: "Hoàn thành", value: completed },
-                  { name: "Chưa hoàn thành", value: pending },
-                ]}
-                cx="50%"
-                cy="50%"
-                innerRadius={50}
-                outerRadius={80}
-                label
-              >
-                <Cell fill="#10b981" />
-                <Cell fill="#f87171" />
-              </Pie>
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
         <div className="bg-white rounded-xl shadow p-4">
           <h3 className="text-lg font-semibold mb-2">
             Khối lượng công việc theo kỹ thuật viên

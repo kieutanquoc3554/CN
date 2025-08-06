@@ -2,6 +2,11 @@ import { ClockIcon } from "lucide-react";
 
 const updates = [
   {
+    date: "2025-08-06",
+    title: "Cập nhật chức năng Phân tích chi phí",
+    description: `Thêm API phân tích chi phí, xuất Excel, sửa lỗi, tối ưu hiệu năng`,
+  },
+  {
     date: "2025-08-04",
     title:
       "Cập nhật chức năng Quản lý vật tư, trang dashboard, bổ sung chức năng Xoá phiếu công việc, sửa lỗi không lưu lịch sử bảo trì, tối ưu hiệu năng và sửa lỗi tồn đọng",
@@ -38,7 +43,7 @@ export default function UpdateTimeline() {
   return (
     <div className="p-6 max-w-4xl">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">
-        📘 Lịch sử cập nhật hệ thống
+        📘 Lịch sử cập nhật hệ thống (v3.0)
       </h2>
       <ol className="relative border-l border-indigo-300">
         {updates.map((item, index) => (
