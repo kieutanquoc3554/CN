@@ -128,9 +128,9 @@ export default function CostAnalysis() {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
 
-      <div className="overflow-x-auto">
-        <table className="table-auto w-full border border-gray-300 text-sm shadow-sm rounded-lg">
-          <thead className="bg-sky-100 text-gray-800 font-semibold">
+      <div className="overflow-x-auto rounded-lg shadow-xl border border-gray-100">
+        <table className="min-w-full text-sm text-gray-800 bg-white">
+          <thead className="bg-[#615FFF] from-sky-500 to-sky-400 text-white shadow-sm">
             <tr>
               {[
                 { key: "machine_group", label: "Nhóm máy" },
@@ -139,67 +139,72 @@ export default function CostAnalysis() {
                 { key: "code", label: "Mã vật tư" },
                 { key: "unit", label: "Đơn vị tính" },
                 { key: "current_stock", label: "Tồn kho hiện tại" },
-                { key: "minimum_stock", label: "Lượng tồn tối thiểu" },
-                { key: "last_import_date", label: "Ngày nhập kho gần nhất" },
-                { key: "last_export_date", label: "Ngày xuất kho gần nhất" },
+                { key: "minimum_stock", label: "Tồn tối thiểu" },
+                { key: "last_import_date", label: "Nhập gần nhất" },
+                { key: "last_export_date", label: "Xuất gần nhất" },
                 { key: "price", label: "Giá nhập" },
                 { key: "total", label: "Tổng" },
               ].map((col) => (
                 <th
                   key={col.key}
-                  className="border px-2 py-2 cursor-pointer hover:bg-sky-200 transition"
+                  className="px-4 py-3 text-left font-semibold uppercase tracking-wider cursor-pointer hover:underline"
                   onClick={() => sortBy(col.key)}
                 >
-                  {col.label}
-                  {sortConfig.key === col.key && (
-                    <span> {sortConfig.direction === "asc" ? "▲" : "▼"}</span>
-                  )}
+                  <div className="flex items-center gap-1">
+                    {col.label}
+                    {sortConfig.key === col.key && (
+                      <span className="text-xs">
+                        {sortConfig.direction === "asc" ? "▲" : "▼"}
+                      </span>
+                    )}
+                  </div>
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody>
+
+          <tbody className="divide-y divide-gray-100">
             {filteredReport.map((item, i) => {
               const warn = item.current_stock < item.minimum_stock;
-              const rowColor = groupColors[item.machine_group] || "";
               return (
                 <tr
                   key={i}
-                  className={`text-center hover:bg-yellow-50 transition ${
-                    warn ? "bg-red-100 text-red-800 font-semibold" : rowColor
+                  className={`transition ${
+                    warn
+                      ? "bg-red-50 text-red-700 font-medium"
+                      : "hover:bg-gray-50"
                   }`}
                 >
-                  <td className="border px-2 py-1">{item.machine_group}</td>
-                  <td className="border px-2 py-1">{item.machine_detail}</td>
-                  <td className="border px-2 py-1">{item.name}</td>
-                  <td className="border px-2 py-1">{item.code}</td>
-                  <td className="border px-2 py-1">{item.unit}</td>
-                  <td className="border px-2 py-1">{item.current_stock}</td>
-                  <td className="border px-2 py-1">{item.minimum_stock}</td>
-                  <td className="border px-2 py-1">
+                  <td className="px-4 py-3">{item.machine_group}</td>
+                  <td className="px-4 py-3">{item.machine_detail}</td>
+                  <td className="px-4 py-3">{item.name}</td>
+                  <td className="px-4 py-3">{item.code}</td>
+                  <td className="px-4 py-3">{item.unit}</td>
+                  <td className="px-4 py-3">{item.current_stock}</td>
+                  <td className="px-4 py-3">{item.minimum_stock}</td>
+                  <td className="px-4 py-3">
                     {item.last_import_date
                       ? format(new Date(item.last_import_date), "dd-MM-yyyy")
                       : "-"}
                   </td>
-                  <td className="border px-2 py-1">
+                  <td className="px-4 py-3">
                     {item.last_export_date
                       ? format(new Date(item.last_export_date), "dd-MM-yyyy")
                       : "-"}
                   </td>
-                  <td className="border px-2 py-1">
-                    {formatCurrency(item.price)}
-                  </td>
-                  <td className="border px-2 py-1">
+                  <td className="px-4 py-3">{formatCurrency(item.price)}</td>
+                  <td className="px-4 py-3 font-semibold">
                     {formatCurrency(item.total)}
                   </td>
                 </tr>
               );
             })}
-            <tr className="bg-yellow-200 font-bold text-right">
-              <td colSpan={10} className="border px-2 py-2 text-right">
+
+            <tr className="bg-yellow-500 text-white font-bold text-right text-sm">
+              <td colSpan={10} className="px-4 py-4 text-right rounded-bl-xl">
                 Tổng cộng:
               </td>
-              <td className="border px-2 py-2 text-center">
+              <td className="px-4 py-4 text-center rounded-br-xl">
                 {formatCurrency(totalSum)}
               </td>
             </tr>
