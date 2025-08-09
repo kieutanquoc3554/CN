@@ -93,6 +93,7 @@ export default function Schedule() {
           <thead className="text-gray-600 bg-gray-100">
             <tr>
               <th className="p-4 font-semibold">Thiết bị</th>
+              <th className="p-4 font-semibold">Vật tư được bảo trì</th>
               <th className="p-4 font-semibold">Loại bảo trì</th>
               <th className="p-4 font-semibold">Lịch trình</th>
               <th className="p-4 font-semibold">Hạn kế tiếp</th>
@@ -105,6 +106,9 @@ export default function Schedule() {
             {schedules.map((item) => (
               <tr key={item.id} className="hover:bg-gray-50 transition">
                 <td className="p-4">{item.device_name}</td>
+                <td className="p-4">
+                  {item.spare_part_name || "Chưa xác định"}
+                </td>
                 <td className="p-4">{item.maintenance_type_name}</td>
                 <td className="p-4">
                   {viScheduleType[item.schedule_type] || item.schedule_type}:{" "}

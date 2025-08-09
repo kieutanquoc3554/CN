@@ -12,11 +12,13 @@ export default function CreateScheduleModal({ onClose, onCreated, schedule }) {
     next_due_date: schedule?.next_due_date || "",
     progress_step: schedule?.progress_step || "",
     note: schedule?.note || "",
+    spare_part_id: schedule?.spare_part_id || "",
   });
   const [devices, setDevices] = useState([]);
   const [technicians, setTechnicians] = useState([]);
   const [types, setTypes] = useState([]);
   const [selectedTypeId, setSelectedTypeId] = useState("");
+  const [spareParts, setSpareParts] = useState([]);
 
   const selectedType = types.find((t) => String(t.id) === selectedTypeId);
 
@@ -55,6 +57,26 @@ export default function CreateScheduleModal({ onClose, onCreated, schedule }) {
     fetchTechnicians();
     fetchTypes();
   }, []);
+
+  useEffect(() => {
+    const fetchSpareParts = async () => {
+      if (!form.device_id) {
+        setSpareParts([]);
+        setForm((prev) => ({ ...prev, spare_part_id: "" }));
+        return;
+      }
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_SERVER_URL}/spare-parts/${form.device_id}`
+        );
+        setSpareParts(response.data);
+      } catch (error) {
+        console.log("Lỗi lấy danh sách vật tư", error);
+      }
+    };
+
+    fetchSpareParts();
+  }, [form.device_id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -107,6 +129,24 @@ export default function CreateScheduleModal({ onClose, onCreated, schedule }) {
             {devices.map((device) => (
               <option key={device.id} value={device.id}>
                 {device.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="flex flex-col space-y-1">
+          <label className="font-medium text-gray-700">
+            Vật tư cần bảo trì
+          </label>
+          <select
+            name="spare_part_id"
+            onChange={handleChange}
+            className={inputStyle}
+            value={form.spare_part_id}
+          >
+            <option value="">-- Chọn vật tư --</option>
+            {spareParts.map((part) => (
+              <option key={part.id} value={part.id}>
+                {part.name}
               </option>
             ))}
           </select>

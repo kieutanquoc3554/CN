@@ -69,7 +69,7 @@ export default function Devices() {
   );
 
   const sortedDevices = [...searchedDevices].sort((a, b) =>
-    a.name.localeCompare(b.name)
+    a.code.localeCompare(b.code)
   );
 
   const paginatedDevices = sortedDevices.slice(
@@ -169,7 +169,8 @@ export default function Devices() {
         <table className="min-w-full text-sm text-left border-separate border-spacing-y-2">
           <thead className="text-xs uppercase text-gray-600 bg-gray-50">
             <tr>
-              <th className="px-4 py-3">STT</th>
+              {/* <th className="px-4 py-3">STT</th> */}
+              <th className="px-4 py-3">Mã thiết bị</th>
               <th className="px-4 py-3">Tên thiết bị (A-Z)</th>
               <th className="px-4 py-3">Model</th>
               <th className="px-4 py-3">Tình trạng</th>
@@ -183,9 +184,10 @@ export default function Devices() {
                 key={device.id}
                 className="bg-white hover:bg-gray-50 transition rounded-xl"
               >
-                <td className="px-4 py-3">
+                {/* <td className="px-4 py-3">
                   {(currentPage - 1) * devicesPerPage + index + 1}
-                </td>
+                </td> */}
+                <td className="px-4 py-3 font-semibold">{device.code}</td>
                 <td className="px-4 py-3 font-semibold">{device.name}</td>
                 <td className="px-4 py-3">{device.model || "Chưa cập nhật"}</td>
                 <td className="px-4 py-3">
