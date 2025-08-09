@@ -93,7 +93,7 @@ export default function Schedule() {
           <thead className="text-gray-600 bg-gray-100">
             <tr>
               <th className="p-4 font-semibold">Thiết bị</th>
-              <th className="p-4 font-semibold">Chi tiết được bảo trì</th>
+              <th className="p-4 font-semibold">Vật tư được sử dụng</th>
               <th className="p-4 font-semibold">Loại bảo trì</th>
               <th className="p-4 font-semibold">Lịch trình</th>
               <th className="p-4 font-semibold">Hạn kế tiếp</th>
