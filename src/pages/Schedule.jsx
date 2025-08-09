@@ -97,7 +97,7 @@ export default function Schedule() {
               <th className="p-4 font-semibold">Loại bảo trì</th>
               <th className="p-4 font-semibold">Lịch trình</th>
               <th className="p-4 font-semibold">Hạn kế tiếp</th>
-              <th className="p-4 font-semibold">Ghi chú</th>
+              <th className="p-4 font-semibold">Chi tiết</th>
               <th className="p-4 font-semibold">Tiến độ</th>
               <th className="p-4 font-semibold text-center">Hành động</th>
             </tr>
